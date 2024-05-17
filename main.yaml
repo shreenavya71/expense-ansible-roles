@@ -1,0 +1,5 @@
+- name: "congigure {{ component }} server"
+  hosts: "{{ component }}"
+  become: yes
+  roles:
+    - "{{ component }}"    
