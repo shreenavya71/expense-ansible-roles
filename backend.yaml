@@ -1,6 +1,8 @@
 - name: congigure backend server
   hosts: backend
   become: yes
+  vars_file:
+  - credentials.yaml
   roles:
     - backend
     

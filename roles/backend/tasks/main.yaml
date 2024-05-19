@@ -22,6 +22,8 @@
     tasks_from: app-pre-req
   
 - name: install npm dependencies
+  tags:
+  - deployment
   ansible.builtin.command: npm install
   args:            # args keyword is used for telling ansible to go to /app dir and run the above command
     chdir: /app    # if you dont give args, we dont know where we are in the ansible server
@@ -53,8 +55,10 @@
     daemon_reload: true
 
 - name: start backend service
+  tags:
+  - deployment  
   ansible.builtin.service:
     name: backend.service
-    state: started
+    state: restarted
     enabled: yes
     
