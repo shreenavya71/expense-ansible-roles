@@ -1,0 +1,21 @@
+- name: create ec2 and r53 records
+  hosts: localhost
+  tasks: 
+  - name: create ec2 instances
+    ansible.builtin.ec2_instance:
+      instance_type: t2.micro
+      name: "{{ item }}"
+      security_group: all traffic # replace with your security group name
+      image_id: ami-090252cbe067a9e58
+      tags:
+      Name: "{{ item }}"  # settings the names to the instances 
+
+    loop:
+    - db
+    - backend
+    - frontend
+    register: ec2_instances_info
+
+  - name: print output
+    ansible.builtin.debug:
+      msg: "output: {{ ec2_instances_info }}"
