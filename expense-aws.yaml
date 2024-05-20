@@ -10,7 +10,7 @@
       security_group: all traffic # replace with your security group name
       image_id: ami-090252cbe067a9e58
       tags:
-      Name: "{{ item }}"  # settings the names to the instances 
+        name: "{{ item }}"  # settings the names to the instances 
 
     loop:
     - db
