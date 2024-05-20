@@ -1,6 +1,8 @@
 - name: create ec2 and r53 records
-  hosts: localhost
-  tasks: 
+  hosts: localhost 
+  vars: 
+    zone: devopsnavyahome.online
+  tasks:
   - name: create ec2 instances
     ansible.builtin.ec2_instance:
       instance_type: t2.micro
