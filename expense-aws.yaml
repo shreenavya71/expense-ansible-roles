@@ -4,7 +4,7 @@
     zone: devopsnavyahome.online
   tasks:
   - name: create ec2 instances
-    ansible.builtin.ec2_instance:
+    ansible.aws.ec2_instance:
       instance_type: t2.micro
       name: "{{ item }}"
       security_group: all traffic # replace with your security group name
